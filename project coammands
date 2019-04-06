@@ -1,0 +1,19 @@
+sudo apt install python3-pip	//install pip
+
+pip install flask		//install flask 
+
+python3 app.py 			//run app on local host
+
+sudo apt-get install mysql-server libmysqlclient-dev  //install mysql
+mysql -u root -p					//requires password
+sudo mysql --defaults-file=/etc/mysql/debian.cnf    //to use mysql without poassword
+pip3 install Flask-mysqldb			//install flask mysqldb
+pip3 install Flask-WTF				//form validation
+pip3 install passlib				//for password stuff
+// use pip3 if using python3
+
+
+//To open xampp
+cd /opt/lampp/
+ls
+sudo ./manager-linux-x64.run
