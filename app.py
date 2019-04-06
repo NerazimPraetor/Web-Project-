@@ -9,8 +9,8 @@ app = Flask(__name__)
 # app.debug = True
 # Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '123456'
+app.config['MYSQL_USER'] = 'golden'
+app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'webproject'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
@@ -46,32 +46,35 @@ class RegisterForm(Form):
     confirm = PasswordField('Confirm Password')
 
 
+# User Register
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
-        name = form.name.data 
+        name = form.name.data
         email = form.email.data
         username = form.username.data
         password = sha256_crypt.encrypt(str(form.password.data))
 
-        #Create cursor
+        # Create cursor
         cur = mysql.connection.cursor()
 
-        cur.execute("INSERT INTO users(name, email, username, password) VALUES(%s, %s, %s, %s)"(name, email, username, password))
+        # Execute query
+        cur.execute("INSERT INTO users(name, email, username, password) VALUES(%s, %s, %s, %s)", (name, email, username, password))
 
-        # Commit to db
+        # Commit to DB
         mysql.connection.commit()
 
         # Close connection
         cur.close()
 
-        flash('You are now registered and can log-in', 'success')
+        flash('You are now registered and can log in', 'success')
 
-        redirect(url_for('index'))
+        return redirect(url_for('login'))
+    return render_template('register.html', form=form)
 
-        return render_template ('register.html')
-    return render_template ('register.html', form=form)
+
+
 
 
 

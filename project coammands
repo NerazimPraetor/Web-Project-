@@ -1,6 +1,6 @@
 sudo apt install python3-pip	//install pip
 
-pip install flask		//install flask 
+pip3 install flask		//install flask 
 
 python3 app.py 			//run app on local host
 
