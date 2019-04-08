@@ -5,15 +5,18 @@ from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
+# from flask.ext.mysqldb import MySQL
 
 
 app = Flask(__name__)
+app.config['SESSION_TYPE'] = 'memcached'
+app.config['SECRET_KEY'] = 'super secret key'
 # app.debug = True
 # Config MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'admin'
-app.config['MYSQL_DB'] = 'webproject'
+app.config['MYSQL_HOST'] = 'sql9.freemysqlhosting.net'
+app.config['MYSQL_USER'] = 'sql9287113'
+app.config['MYSQL_PASSWORD'] = '5gekkE3XlR'
+app.config['MYSQL_DB'] = 'sql9287113'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
 mysql = MySQL(app)
@@ -22,7 +25,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/about')
 def about():
@@ -124,7 +127,7 @@ def login():
 
             # Compare Passwords
             if sha256_crypt.verify(password_candidate, password):
-                app.logger.info('PASSWORD MATCHED')
+                # app.logger.info('PASSWORD MATCHED')
                 # Passed
                 session['logged_in'] = True
                 session['username'] = username
@@ -133,7 +136,7 @@ def login():
                 return redirect(url_for('dashboard'))
             else:
                 error = 'Invalid login'
-                app.logger.info('PASSWORD NOT MATCHED')
+                # app.logger.info('PASSWORD NOT MATCHED')
                 return render_template('login.html', error=error)
             # Close connection
             cur.close()
@@ -239,7 +242,7 @@ def edit_article(id):
 
         # Create Cursor
         cur = mysql.connection.cursor()
-        app.logger.info(title)
+        # app.logger.info(title)
         # Execute
         cur.execute ("UPDATE articles SET title=%s, body=%s WHERE id=%s",(title, body, id))
         # Commit to DB
