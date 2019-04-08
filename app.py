@@ -9,6 +9,8 @@ from functools import wraps
 
 
 app = Flask(__name__)
+app.config['SESSION_TYPE'] = 'memcached'
+app.config['SECRET_KEY'] = 'super secret key'
 # app.debug = True
 # Config MySQL
 app.config['MYSQL_HOST'] = 'sql9.freemysqlhosting.net'
