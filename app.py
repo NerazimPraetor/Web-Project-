@@ -125,7 +125,7 @@ def login():
 
             # Compare Passwords
             if sha256_crypt.verify(password_candidate, password):
-                app.logger.info('PASSWORD MATCHED')
+                # app.logger.info('PASSWORD MATCHED')
                 # Passed
                 session['logged_in'] = True
                 session['username'] = username
@@ -134,7 +134,7 @@ def login():
                 return redirect(url_for('dashboard'))
             else:
                 error = 'Invalid login'
-                app.logger.info('PASSWORD NOT MATCHED')
+                # app.logger.info('PASSWORD NOT MATCHED')
                 return render_template('login.html', error=error)
             # Close connection
             cur.close()
@@ -240,7 +240,7 @@ def edit_article(id):
 
         # Create Cursor
         cur = mysql.connection.cursor()
-        app.logger.info(title)
+        # app.logger.info(title)
         # Execute
         cur.execute ("UPDATE articles SET title=%s, body=%s WHERE id=%s",(title, body, id))
         # Commit to DB
