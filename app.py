@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
+from flask import Flask, render_template, flash, redirect, url_for, session, logging, request, jsonify
 import requests
 # from data import Articles
 from flask_mysqldb import MySQL
@@ -50,6 +50,23 @@ def articles():
         return render_template('articles.html', msg=msg)
     # Close connection
     cur.close()
+
+@app.route('/form')
+def form():
+	return render_template('form.html')
+
+@app.route('/process', methods=['POST'])
+def process():
+
+	email = request.form['email']
+	name = request.form['name']
+
+	if name and email:
+		newName = name[::-1]
+
+		return jsonify({'name' : newName})
+
+	return jsonify({'error' : 'Missing data!'})
 
 @app.route('/article/<string:id>')
 def article(id):
