@@ -5,15 +5,16 @@ from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
+# from flask.ext.mysqldb import MySQL
 
 
 app = Flask(__name__)
 # app.debug = True
 # Config MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'admin'
-app.config['MYSQL_DB'] = 'webproject'
+app.config['MYSQL_HOST'] = 'sql9.freemysqlhosting.net'
+app.config['MYSQL_USER'] = 'sql9287113'
+app.config['MYSQL_PASSWORD'] = '5gekkE3XlR'
+app.config['MYSQL_DB'] = 'sql9287113'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
 mysql = MySQL(app)
