@@ -12,6 +12,13 @@ pip3 install Flask-WTF				//form validation
 pip3 install passlib				//for password stuff
 // use pip3 if using python3
 
+//for external api
+pip3 install requests
+import requests
+import pprint
+r = requests.get('https://api.dailysmarty.com/search?q=c9+fix')     ///example for format of the api link
+
+
 
 //To open xampp
 cd /opt/lampp/

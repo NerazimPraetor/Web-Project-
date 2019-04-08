@@ -1,0 +1,27 @@
+<!-- {{ results }} -->
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Daily Smarty Search Results</h1>
+  <hr>
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Date</th>
+    </tr>
+    {% for t in results %}
+      <tr>
+        <td>{{t.id}}</td>
+        <td>{{t.title}}</td>
+        <td>For the full post follow the 
+            <a href={{t.url_for_post}} style="color:blue">
+                LINK... 
+            </a>
+</td>
+        <td>{{t.created_at}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

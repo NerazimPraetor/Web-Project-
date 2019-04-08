@@ -1,4 +1,5 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, logging, request
+import requests
 # from data import Articles
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
@@ -21,7 +22,7 @@ mysql = MySQL(app)
 
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return render_template('index.html')
 
 @app.route('/about')
 def about():
@@ -272,6 +273,25 @@ def delete_article(id):
     flash('Article Deleted', 'success')
 
     return redirect(url_for('dashboard'))
+
+@app.route('/search_dailysmarty', methods=['POST'])
+@is_logged_in
+def search_dailysmarty():
+
+    text = request.form['text']                         # text entered in the search bar
+    url = 'https://api.dailysmarty.com/search?q='       #  API link
+    search_text = text.replace(' ', '+')                # making the search text of the correct format to merge
+    final_url = url + search_text                       # merging the link with what the user searched for
+
+    
+    # app.logger.info(text)
+    results = requests.get(final_url) 
+    results = results.json()['posts']
+    # app.logger.info(text)
+
+
+
+    return render_template('search_dailysmarty.html', results=results)
 
 if __name__ == '__main__':
     app.secret_key='secret123'
