@@ -11,8 +11,8 @@ app = Flask(__name__)
 # app.debug = True
 # Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'golden'
-app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'admin'
 app.config['MYSQL_DB'] = 'webproject'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
