@@ -13,10 +13,10 @@ app.config['SESSION_TYPE'] = 'memcached'
 app.config['SECRET_KEY'] = 'super secret key'
 # app.debug = True
 # Config MySQL
-app.config['MYSQL_HOST'] = 'sql9.freemysqlhosting.net'
-app.config['MYSQL_USER'] = 'sql9287113'
-app.config['MYSQL_PASSWORD'] = '5gekkE3XlR'
-app.config['MYSQL_DB'] = 'sql9287113'
+app.config['MYSQL_HOST'] = 'remotemysql.com'
+app.config['MYSQL_USER'] = 'DY3RfZHvBv'
+app.config['MYSQL_PASSWORD'] = '19zRI8He52'
+app.config['MYSQL_DB'] = 'DY3RfZHvBv'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
 mysql = MySQL(app)
