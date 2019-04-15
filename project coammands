@@ -20,9 +20,18 @@ r = requests.get('https://api.dailysmarty.com/search?q=c9+fix')     ///example f
 
 
 //DATABASE = webproject
+https://remotemysql.com/phpmyadmin/sql.php?server=1&db=DY3RfZHvBv&table=users&pos=0
+
+Username: DY3RfZHvBv 
+Database: DY3RfZHvBv 
+Password: 19zRI8He52 
+Server: remotemysql.com 
+Port: 3306 
+
 TABLES
 user table = CREATE TABLE users(id INT(11) AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), email VARCHAR(100), username VARCHAR(30), password VARCHAR(100), register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
 articles tabele = CREATE TABLE articles(id INT(11) AUTO_INCREMENT PRIMARY KEY, title VARCHAR(255), author VARCHAR(100), body TEXT, create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
 
 
 //To open xampp
