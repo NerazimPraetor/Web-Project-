@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>Welcome to WEB PROJECT</h1>
+        <p class="lead">These are the articles</p>
+    </div>
+    <button type="button" onclick="updateArticles()">Update</button>
+    <ul class="list-group"></ul>
+        {% for article in articles %}
+            <li class="list-group-item"> <a href="article/{{article.id}}"> {{article.title}} </a></a> </li>
+        {% endfor %}
+    </ul>
+    <script>
+        funtion updateArticles(){
+            
+        }
+    </script>
+{% endblock %}
