@@ -1,21 +1,11 @@
 $(document).ready(function(){
-    $("#update").click(function(event){
-        $.ajax({
-            type: "GET",
-            url: "update.php",
-            dataType: "html"
-        })
-		.done(function(data){
-			if (data.error){
-				$('#errorAlert').text(data.error).show();
-				$('#successAlert').hide();
-			}
-			else {
-				$('#successAlert').text(data.name).show();
-				$('#errorAlert').hide();
-			}
-		});
-
-        event.preventDefault();
-    })
+    $("#update").on("submit", function(event){
+		$("#articlesList").empty();
+		
+		$("#articlesList").append(`
+			{% for article in articles %}
+                <li class="list-group-item"> <a href="article/{{article.id}}"> {{article.title}} </a> </li>
+            {% endfor %}
+		`);
+    });
 });
